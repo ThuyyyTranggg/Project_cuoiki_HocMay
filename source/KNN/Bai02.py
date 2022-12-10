@@ -1,5 +1,4 @@
 from sklearn.neighbors import KNeighborsClassifier
-from sklearn.metrics import classification_report
 from sklearn.model_selection import train_test_split
 
 from sklearn import datasets
@@ -7,7 +6,6 @@ from skimage import exposure
 import numpy as np
 import imutils
 import cv2
-import sklearn
 import streamlit as st
 # take the MNIST data and construct the training and testing split, using 75% of the
 # data for training and 25% for testing

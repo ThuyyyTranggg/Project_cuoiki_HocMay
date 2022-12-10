@@ -1,5 +1,6 @@
 import tkinter as tk
 from PIL import ImageTk, Image
+import streamlit as st 
 
 class App(tk.Tk):
     def __init__(self):
@@ -10,7 +11,8 @@ class App(tk.Tk):
         self.image = Image.open('F:/2Nam3/HocMay/Project_cuoiki_HocMay/source/KNN/castle.jpg')
         self.canvas = tk.Canvas(self, relief = tk.SUNKEN, borderwidth = 0, bg = 'white', highlightthickness = 0)
         self.canvas.grid(row = 0, column = 0, sticky = tk.NSEW, padx = 5, pady = 5)
-        self.canvas.bind("<Configure>", self.configure)        
+        self.canvas.bind("<Configure>", self.configure)     
+        
 
     def configure(self, event):
         self.canvas.delete('all')
@@ -20,6 +22,7 @@ class App(tk.Tk):
         img = self.image.resize((W, H), Image.ANTIALIAS)
         self.image_tk = ImageTk.PhotoImage(img)
         self.canvas.create_image(0, 0, anchor = tk.NW, image = self.image_tk)
+
 
 if __name__ == "__main__":
     app = App()
