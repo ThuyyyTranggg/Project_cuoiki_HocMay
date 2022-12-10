@@ -39,9 +39,6 @@ y_ve = np.matmul(x_ve_poly, lin_reg.coef_.T)
 for i in range(0, 100):
     y_real[i] = 3*(x_ve[i]-2) * (x_ve[i]-3)*(x_ve[i]-4)
 
-
-
-
 print(np.min(y_test), np.max(y) + 100)
 
 # Tinh sai so cua scikit-learn

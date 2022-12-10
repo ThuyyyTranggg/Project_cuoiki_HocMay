@@ -134,7 +134,6 @@ with tab3:
     for i in range(0, 100):
         y_real[i] = 3*(x_ve[i]-2) * (x_ve[i]-3)*(x_ve[i]-4)
 
-    st.write(np.min(y_test), np.max(y) + 100)
 
     # Tinh sai so cua scikit-learn
     y_train_predict = lin_reg.predict(X_poly)
@@ -154,6 +153,7 @@ with tab3:
     plt.plot(x_ve, y_real, '--')
     plt.title('Hồi quy đa thức bậc 8')
     st.pyplot(fig)
+    st.write(np.min(y_test), np.max(y) + 100)
     st.write('Sai số bình phương trung bình - tập training: %.6f' % (sai_so_binh_phuong_trung_binh/2))
     st.write('Sai số bình phương trung bình - tập test: %.6f' % (sai_so_binh_phuong_trung_binh/2))
 with tab4:
@@ -184,7 +184,6 @@ with tab4:
     for i in range(0, 100):
         y_real[i] = 3*(x_ve[i]-2) * (x_ve[i]-3)*(x_ve[i]-4)
 
-    st.write(np.min(y_test), np.max(y) + 100)
 
     
     fig, ax = plt.subplots()
@@ -207,5 +206,6 @@ with tab4:
     plt.title('Hồi quy đa thức bậc 16')
 
     st.pyplot(fig)
+    st.write(np.min(y_test), np.max(y) + 100)
     st.write('Sai số bình phương trung bình - tập training: %.6f' % (sai_so_binh_phuong_trung_binh/2))
     st.write('Sai số bình phương trung bình - tập test: %.6f' % (sai_so_binh_phuong_trung_binh/2))
