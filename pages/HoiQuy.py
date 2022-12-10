@@ -6,11 +6,22 @@ from sklearn.model_selection import train_test_split
 import numpy as np
 import pandas as pd
 st.title("Hồi quy")
+st.sidebar.markdown("# Hồi quy")
 
-tab1, tab2, tab3, tab4, tab5= st.tabs(["Bài 01", "Bài 02", "Bài 03", "Bài 04", "Bài 05"])
+def get_fvalue(val):
+    feature_dict = {"No":1,"Yes":2}
+    for key,value in feature_dict.items():
+        if val == key:
+            return value
+
+def get_value(val,my_dict):
+    for key,value in my_dict.items():
+        if val == key:
+            return value
+app_mode = st.sidebar.selectbox('Select Page',["Bài 01", "Bài 02", "Bài 03", "Bài 04", "Bài 05"]) 
 
 
-with tab1:
+if(app_mode == 'Bài 01'):
     st.title("Bài 01: Tính toán")
     X = np.array([[147, 150, 153, 158, 163, 165, 168, 170, 173, 175, 178, 180, 183]])
     mot = np.ones((1, 13), dtype = np.int32)
@@ -49,7 +60,7 @@ with tab1:
         st.session_state.btn_giai = True
         ket_qua = hight*w[1, 0] + w[0, 0]
         st.write('Chiều cao là %d thì cân nặng là: %d' % (hight, ket_qua))
-with tab2:
+elif(app_mode == 'Bài 02'):
     st.title("Bài 02: Nghiệm theo thư viện scikit - learn")
     
     # height (cm), input data, each row is a data point
@@ -73,7 +84,7 @@ with tab2:
     st.pyplot(fig)
     # Compare two results
     st.write("Nghiệm theo thư viện scikit-learn : w_0 = ", regr.intercept_, "w_1 = ", regr.coef_[0])
-with tab3:
+elif(app_mode == 'Bài 03'):
     st.title("Bài 03: Hồi quy bậc 2")
     st.header("Giới thiệu")
     st.write("Hàm số y ≈ f(x)= ((w)^T)x là một hàm tuyến tính theo cả w và x. Trên thực tế, Linear Regression có thể áp dụng cho các mô hình chỉ cần tuyến tính theo w")
@@ -119,7 +130,7 @@ with tab3:
     st.write('Sai số phương sai trung bình: %.6f' % (sai_so_binh_phuong_trung_binh/2)," cũng bằng với sai số loss tính được ở trên")
     st.pyplot(fig)
     st.latex("Example")
-with tab4:
+elif(app_mode == 'Bài 04'):
     st.title("Bài 04: Hạn chế của Hồi Quy")
     #Hạm chế của hồi quy
     # height (cm), input data, each row is a data point
@@ -146,7 +157,7 @@ with tab4:
     st.write("Sự nhiễu của 1 cặp dữ liệu trong model (150cm, 90kg)")
     st.pyplot(fig)
     st.latex("Example")
-with tab5:
+else:
     st.title("Bài 05: Cách khắc phục")
     
     # height (cm), input data, each row is a data point

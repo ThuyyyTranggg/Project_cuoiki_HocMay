@@ -7,10 +7,23 @@ from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_squared_error
 
 st.title("Overfitting")
+st.sidebar.markdown("# Overfitting")
 
-tab1, tab2, tab3, tab4= st.tabs(["Bài 01a", "Bài 01b", "Bài 01c", "Bài 01d"])
+def get_fvalue(val):
+    feature_dict = {"No":1,"Yes":2}
+    for key,value in feature_dict.items():
+        if val == key:
+            return value
 
-with tab1:
+def get_value(val,my_dict):
+    for key,value in my_dict.items():
+        if val == key:
+            return value
+app_mode = st.sidebar.selectbox('Select Page',["Bài 01a", "Bài 01b", "Bài 01c", "Bài 01d"]) 
+
+
+
+if(app_mode=='Bài 01a'):
     st.title('Bài 1a')
     np.random.seed(100)
 
@@ -58,7 +71,7 @@ with tab1:
     st.pyplot(fig)
     st.write('Sai số bình phương trung bình - tập training: %.6f' % (sai_so_binh_phuong_trung_binh/2))
     st.write('Sai số bình phương trung bình - tập test: %.6f' % (sai_so_binh_phuong_trung_binh/2))
-with tab2: 
+elif(app_mode=='Bài 01b'):
     st.title('Bài 1b')
       
     np.random.seed(100)
@@ -106,7 +119,7 @@ with tab2:
     st.pyplot(fig)
     st.write('Sai số bình phương trung bình - tập training: %.6f' % (sai_so_binh_phuong_trung_binh/2))
     st.write('Sai số bình phương trung bình - tập test: %.6f' % (sai_so_binh_phuong_trung_binh/2))
-with tab3:
+elif(app_mode=='Bài 01c'):
     st.title('Bài 1c')
     
     np.random.seed(100)
@@ -156,7 +169,7 @@ with tab3:
     st.write(np.min(y_test), np.max(y) + 100)
     st.write('Sai số bình phương trung bình - tập training: %.6f' % (sai_so_binh_phuong_trung_binh/2))
     st.write('Sai số bình phương trung bình - tập test: %.6f' % (sai_so_binh_phuong_trung_binh/2))
-with tab4:
+else:
     st.title('Bài 1d')
     np.random.seed(100)
 

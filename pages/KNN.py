@@ -17,9 +17,20 @@ from skimage import exposure
 import imutils
 
 st.title("K-Nearest Neighbors")
+st.sidebar.markdown("# K-Nearest Neighbors")
 
-tab1, tab2, tab3, tab4, tab5, tab6 = st.tabs(["bai01", "bai02", "Bai03", "Bai03a", "bai04", "bai08"])
-with tab1:
+def get_fvalue(val):
+    feature_dict = {"No":1,"Yes":2}
+    for key,value in feature_dict.items():
+        if val == key:
+            return value
+
+def get_value(val,my_dict):
+    for key,value in my_dict.items():
+        if val == key:
+            return value
+app_mode = st.sidebar.selectbox('Select Page',["Bai01", "Bai02", "Bai03", "Bai03a", "Bai04", "Bai08"]) 
+if app_mode=='Bai01':
     st.header('BÀI 01')
     N = 150
     centers = [[2, 3], [5, 5], [1, 8]]
@@ -69,7 +80,7 @@ with tab1:
         my_test = np.array([[x, y]])
         st.text("Kết quả cặp [x,y] thuộc nhãn :")
         ket_qua = st.text(knn.predict(my_test))
-with tab2:
+elif (app_mode=='Bai02'):
     st.title("BÀI 02") 
     # take the MNIST data and construct the training and testing split, using 75% of the
     # data for training and 25% for testing
@@ -108,15 +119,15 @@ with tab2:
         if btnD:
             st.image(image, clamp=True)
             st.write("I think that digit is: {}".format(prediction))
-with tab3:
+elif (app_mode=='Bai03'):
     st.header('BÀI 03')
     mnist = keras.datasets.mnist 
     (X_train, Y_train), (X_test, Y_test) = mnist.load_data() 
 
     # 784 = 28x28
     RESHAPED = 784
-    X_train = X_train.reshape(60000, RESHAPED)
-    X_test = X_test.reshape(10000, RESHAPED) 
+    X_train = X_train.reshape(60000, RESHAPED).astype("uint8")
+    X_test = X_test.reshape(10000, RESHAPED).astype("uint8")
 
     # now, let's take 10% of the training data and use that for validation
     (trainData, valData, trainLabels, valLabels) = train_test_split(X_train, Y_train,
@@ -137,7 +148,7 @@ with tab3:
     do_chinh_xac = accuracy_score(Y_test, predicted)
     st.write('Độ chính xác trên tập test: %.0f%%' % (do_chinh_xac*100))
     st.download_button("Download Model", data=pickle_model(model), file_name="knn_mnist.pkl")
-with tab4:
+elif(app_mode=='Bai03a'):
     st.header("BÀI 03a")
     uploaded_file = st.file_uploader("OPEN MODEL",type=['pkl'])
     if uploaded_file is not None:
@@ -175,7 +186,7 @@ with tab4:
                         ketqua = ketqua + '%3d' % (predicted[k])
                         k = k + 1
                     st.subheader(ketqua )
-with tab5:
+elif(app_mode=='Bai04'):
     st.header("BÀI 04")
     uploaded_file = st.file_uploader("OPEN FILE",type=['pkl'])
     if uploaded_file is not None:
@@ -216,6 +227,6 @@ with tab5:
                             ketqua = ketqua + '%3d' % (predicted[k])
                             k = k + 1
                         st.subheader(ketqua )
-with tab6:
+else:
     st.header("BÀI 08")
     st.image('F:/2Nam3/HocMay/Project_cuoiki_HocMay/source/KNN/castle.jpg',clamp=True)
