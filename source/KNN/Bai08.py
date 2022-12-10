@@ -7,7 +7,7 @@ class App(tk.Tk):
         self.columnconfigure(0, weight=1)
         self.rowconfigure(0, weight=1)
         self.resizable(True, True)
-        self.image = Image.open('castle.jpg')
+        self.image = Image.open('F:/2Nam3/HocMay/Project_cuoiki_HocMay/source/KNN/castle.jpg')
         self.canvas = tk.Canvas(self, relief = tk.SUNKEN, borderwidth = 0, bg = 'white', highlightthickness = 0)
         self.canvas.grid(row = 0, column = 0, sticky = tk.NSEW, padx = 5, pady = 5)
         self.canvas.bind("<Configure>", self.configure)        

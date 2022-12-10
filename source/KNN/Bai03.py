@@ -28,10 +28,10 @@ joblib.dump(model, "knn_mnist.pkl")
 # Đánh giá trên tập validation
 predicted = model.predict(valData)
 do_chinh_xac = accuracy_score(valLabels, predicted)
-print('Độ chính xác trên tập validation: %.0f%%' % (do_chinh_xac*100))
+val = (do_chinh_xac*100)
 
 # Đánh giá trên tập test
 predicted = model.predict(X_test)
 do_chinh_xac = accuracy_score(Y_test, predicted)
-print('Độ chính xác trên tập test: %.0f%%' % (do_chinh_xac*100))
+test  =(do_chinh_xac*100)
 

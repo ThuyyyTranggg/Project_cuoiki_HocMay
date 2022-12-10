@@ -8,8 +8,7 @@ import numpy as np
 import imutils
 import cv2
 import sklearn
-
-
+import streamlit as st
 # take the MNIST data and construct the training and testing split, using 75% of the
 # data for training and 25% for testing
 mnist = datasets.load_digits()
@@ -41,9 +40,9 @@ for i in list(map(int, np.random.randint(0, high=len(testLabels), size=(5,)))):
 	image = image.reshape((8, 8)).astype("uint8")
 
 	image = exposure.rescale_intensity(image, out_range=(0, 255))
-	image = imutils.resize(image, width=32, inter=cv2.INTER_CUBIC)
+	image =(imutils.resize(image, width=32, inter=cv2.INTER_CUBIC))
 
 	# show the prediction
-	print("I think that digit is: {}".format(prediction))
 	cv2.imshow("Image", image)
+	st.write("I think that digit is: {" + format(prediction) +"}")
 	cv2.waitKey(0)
