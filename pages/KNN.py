@@ -92,8 +92,7 @@ with tab2:
     st.write("accuracy = %.2f%%" % (score * 100))
 
     # loop over a few random digits
-    btnD = st.button("Data:")
-    btnP = st.button("Prediction:")
+    btnD = st.button("Data and Prediction:")
     for i in list(map(int, np.random.randint(0, high=len(testLabels), size=(5,)))):
         # grab the image and classify it
         image = testData[i]
@@ -108,8 +107,7 @@ with tab2:
         # show the prediction
         if btnD:
             st.image(image, clamp=True)
-            if btnP:
-                st.write("I think that digit is: {}".format(prediction))
+            st.write("I think that digit is: {}".format(prediction))
 with tab3:
     st.header('BÀI 03')
     mnist = keras.datasets.mnist 
