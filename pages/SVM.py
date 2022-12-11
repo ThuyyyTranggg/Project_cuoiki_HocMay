@@ -14,6 +14,7 @@ import numpy as np
 st.title("Support Vector Machine")
 select = st.sidebar.selectbox("",['Bài 01', 'Bài 02', 'Bài 03', 'Bài 04'])
 if select == "Bài 01":
+    st.title("BÀI 1")
     np.random.seed(100)
     N = 150
 
@@ -122,6 +123,7 @@ if select == "Bài 01":
     #st.set_option('deprecation.showPyplotGlobalUse', False)
 
 if select == "Bài 02":
+    st.title("BÀI 2")
     np.random.seed(100)
     N = 150
 
@@ -205,9 +207,6 @@ if select == "Bài 02":
     print(distance)
     vi_tri_min = np.argmin(distance)
     min_val = np.min(distance)
-    print('vi tri min', vi_tri_min)
-    print('gia tri min', min_val)
-    print('Những giá trị gần min')
     vi_tri = []
     for i in range(0, SIZE):
         if (distance[i] - min_val) <= 1.0E-3:
@@ -240,7 +239,7 @@ if select == "Bài 02":
     st.pyplot()
     st.write('Sai số: ', sai_so)
     st.write('kết quả nhận đang là nhóm :', ket_qua[0])
-    st.write(distance)
+    st.write(distance.T)
     st.line_chart(distance)
     st.write('Vị trí min: ', vi_tri_min)
     st.write('Giá trị min: ', min_val)
@@ -248,6 +247,7 @@ if select == "Bài 02":
     st.set_option('deprecation.showPyplotGlobalUse', False)
 
 if select == "Bài 03":
+    st.title("BÀI 3")
     np.random.seed(100)
     N = 150
 
@@ -348,6 +348,7 @@ if select == "Bài 03":
     st.write(support_vectors)
 
 if select == "Bài 04":
+    st.title("BÀI 4")
     X, y = make_blobs(n_samples=40, centers=2, random_state=0)
 
     plt.figure(figsize=(10, 5))
