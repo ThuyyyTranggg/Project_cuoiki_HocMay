@@ -2,12 +2,28 @@ import streamlit as st
 import matplotlib.pyplot as plt
 import numpy as np
 from sklearn.linear_model import LinearRegression
-from matplotlib import pyplot as plt
+import plotly.graph_objects as go
 
-st.title("GIẢM DẦN - ĐẠO HÀM")
+#import source.GiamDanDaoHam.Bai01 as bai1
+import source.GiamDanDaoHam.Bai02 as bai2
+import source.GiamDanDaoHam.Bai02a as bai2a
 
-tab1, tab2, tab3, tab4, tab5, tab6, tab7 = st.tabs(["bai01", "bai02", "Bai02a", "Bai03", "bai04", "bai05", "temp"])
-with tab1:
+
+st.sidebar.markdown("#Đạo hàm giảm dần")
+
+def get_fvalue(val):
+    feature_dict = {"No":1,"Yes":2}
+    for key,value in feature_dict.items():
+        if val == key:
+            return value
+
+def get_value(val,my_dict):
+    for key,value in my_dict.items():
+        if val == key:
+            return value
+app_mode = st.sidebar.selectbox('Menu',["Bài 01", "Bài 02", "Bài 02a", "Bài 03", "Bài 04", "Bài 05", "Temp"]) 
+if(app_mode == 'Bài 01'):
+    st.title("BÀI 01")
     def grad(x):
         return 2*x+ 5*np.cos(x)
     def cost(x):
@@ -21,13 +37,11 @@ with tab1:
                 break
             x.append(x_new)
         return (x, it)
-
     x0 = -5
     eta = 0.1
     (x, it) = myGD1(x0, eta)
     x = np.array(x)
     y = cost(x)
-
     n = 101
     xx = np.linspace(-6, 6, n)
     yy = xx**2 + 5*np.sin(xx)
@@ -102,7 +116,8 @@ with tab1:
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
     
-with tab2:
+elif(app_mode == 'Bài 02'):
+    st.title("BÀI 02")
     X = np.random.rand(1000)
 
     y = 4 + 3 * X + .5*np.random.randn(1000)
@@ -122,7 +137,8 @@ with tab2:
 
     st.set_option('deprecation.showPyplotGlobalUse', False)
     st.pyplot()
-with tab3:
+elif(app_mode == 'Bài 02a'):
+    st.title("BÀI 02a")
     X = np.random.rand(1000)
     y = 4 + 3 * X + .5*np.random.randn(1000) # noise added
 
@@ -160,7 +176,8 @@ with tab3:
     st.write("Sol dound by GD: w = ", w1[-1], ',\nafter %d iterations.' %(it1+1))
     print('Sol found by GD: w = ', w1[-1], ',\nafter %d iterations.' %(it1+1))
 
-with tab4:
+elif(app_mode == 'Bài 03'):
+    st.title('Bài 3')
     np.random.seed(100)
     N = 1000
     X = np.random.rand(N)
@@ -169,7 +186,7 @@ with tab4:
     model = LinearRegression()
     model.fit(X.reshape(-1, 1), y.reshape(-1, 1))
     w, b = model.coef_[0][0], model.intercept_[0]
-    print('b = %.4f va w = %.4f' % (b, w))
+    st.write('b = %.4f va w = %.4f' % (b, w))
 
     one = np.ones((X.shape[0],1))
     Xbar = np.concatenate((one, X.reshape(-1, 1)), axis = 1)
@@ -193,11 +210,11 @@ with tab4:
 
     w_init = np.array([0, 0])
     (w1, it1) = myGD(w_init, 1)
-    print('Sol found by GD: w = ', w1[-1], ',\nafter %d iterations.' %(it1+1))
-    for item in w1:
-        print(item, cost(item))
+    st.write('Sol found by GD: w = ', w1[-1], ',\nafter %d iterations.' %(it1+1))
+    # for item in w1:
+    #     st.write(item, cost(item))
 
-    print(len(w1))
+    # st.write(len(w1))
 
     A = N/(2*N)
     B = np.sum(X*X)/(2*N)
@@ -235,15 +252,16 @@ with tab4:
     ww = temp[1]
     zz = cost(temp) 
     ax.plot3D(bb, ww, zz, 'ro', markersize = 3)
+    
+    
+    # Create an object for graph layout
+    data = go.Surface(x = b, y = w, z = z)
+    fig = go.Figure(data)
 
+    st.plotly_chart(fig)
 
-    ax.plot_wireframe(b, w, z)
-    ax.set_xlabel("b")
-    ax.set_ylabel("w")
-    plt.show()
-    st.pyplot()
-
-with tab5:
+elif(app_mode == 'Bài 04'):
+    st.title("BÀI 04")
     x = np.linspace(-2, 2, 21)
     y = np.linspace(-2, 2, 21)
     X, Y = np.meshgrid(x, y)
@@ -251,7 +269,8 @@ with tab5:
     plt.contour(X, Y, Z, 10)
     plt.show()
     st.pyplot()
-with tab6:
+elif(app_mode == 'Bài 05'):
+    st.title("BÀI 05")
     np.random.seed(100)
     N = 1000
     X = np.random.rand(N)
@@ -317,7 +336,8 @@ with tab6:
     plt.axis('square')
     plt.show()
     st.pyplot()
-with tab7:
+else:
+    st.title("TEMP")
     ax = plt.axes(projection="3d")
 
     X = np.linspace(-2, 2, 21)
