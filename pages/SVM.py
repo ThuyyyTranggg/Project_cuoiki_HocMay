@@ -9,7 +9,17 @@ from sklearn.svm import SVC
 
 import matplotlib.pyplot as plt
 import numpy as np
-
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"] {
+background-image: url('https://image.winudf.com/v2/image/Y29tLnNpbXBsZWRyb2lkLndhbGxwYXBlcmdyYWRpZW50YmFja2dyb3VuZF9zY3JlZW5fMF8xNTI2OTY5MDEyXzAwMA/screen-0.jpg?fakeurl=1&type=.webp');
+background-size: 80%;
+background-position: right;
+background-repeat: initial;
+background-attachment: fixed;
+background-repeat: no-repeat;
+}"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
 
 st.title("Support Vector Machine")
 select = st.sidebar.selectbox("",['Bài 01', 'Bài 02', 'Bài 03', 'Bài 04'])

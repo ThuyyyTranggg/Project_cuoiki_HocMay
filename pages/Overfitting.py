@@ -5,7 +5,17 @@ import matplotlib.pyplot as plt
 from sklearn import linear_model
 from sklearn.preprocessing import PolynomialFeatures
 from sklearn.metrics import mean_squared_error
-
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"] {
+background-image: url('https://image.winudf.com/v2/image/Y29tLnNpbXBsZWRyb2lkLndhbGxwYXBlcmdyYWRpZW50YmFja2dyb3VuZF9zY3JlZW5fMF8xNTI2OTY5MDEyXzAwMA/screen-0.jpg?fakeurl=1&type=.webp');
+background-size: 80%;
+background-position: right;
+background-repeat: initial;
+background-attachment: fixed;
+background-repeat: no-repeat;
+}"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
 st.title("Overfitting")
 st.sidebar.markdown("# Overfitting")
 

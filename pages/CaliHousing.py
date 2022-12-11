@@ -7,7 +7,17 @@ import source.End_to_End_Project.CaliHousing.Random_Forest_Regression_Grid_Searc
 import source.End_to_End_Project.CaliHousing.Random_Forest_Regression_Random_Search_CV_UseModel as bai5
 import source.End_to_End_Project.CaliHousing.Random_Forest_Regression_Random_Search_CV as bai6
 import source.End_to_End_Project.CaliHousing.Random_Forest_Regression as bai7
-
+page_bg_img = """
+<style>
+[data-testid="stAppViewContainer"] {
+background-image: url('https://image.winudf.com/v2/image/Y29tLnNpbXBsZWRyb2lkLndhbGxwYXBlcmdyYWRpZW50YmFja2dyb3VuZF9zY3JlZW5fMF8xNTI2OTY5MDEyXzAwMA/screen-0.jpg?fakeurl=1&type=.webp');
+background-size: 80%;
+background-position: right;
+background-repeat: initial;
+background-attachment: fixed;
+background-repeat: no-repeat;
+}"""
+st.markdown(page_bg_img, unsafe_allow_html=True)
 st.title("CaliHousing")
 check = st.checkbox("Bảng dữ liệu")
 if (check):
