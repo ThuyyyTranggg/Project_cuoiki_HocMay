@@ -229,4 +229,10 @@ elif(app_mode=='Bai04'):
                         st.subheader(ketqua )
 else:
     st.header("BÀI 08")
-    st.image('F:/2Nam3/HocMay/Project_cuoiki_HocMay/source/KNN/castle.jpg',clamp=True)
+    bottom_image = st.file_uploader('', type='jpg', key=6)
+    if bottom_image is not None:
+        image = Image.open(bottom_image)
+        st.image(image)
+        st.write('Resize: width = 600 - height = 400')
+        new_image = image.resize((600, 400))
+        st.image(new_image)

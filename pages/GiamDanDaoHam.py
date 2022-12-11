@@ -186,7 +186,7 @@ elif(app_mode == 'Bài 03'):
     model = LinearRegression()
     model.fit(X.reshape(-1, 1), y.reshape(-1, 1))
     w, b = model.coef_[0][0], model.intercept_[0]
-    st.write('b = %.4f va w = %.4f' % (b, w))
+    st.write('b = %.4f & w = %.4f' % (b, w))
 
     one = np.ones((X.shape[0],1))
     Xbar = np.concatenate((one, X.reshape(-1, 1)), axis = 1)
@@ -210,7 +210,7 @@ elif(app_mode == 'Bài 03'):
 
     w_init = np.array([0, 0])
     (w1, it1) = myGD(w_init, 1)
-    st.write('Sol found by GD: w = ', w1[-1], ',\nafter %d iterations.' %(it1+1))
+    st.write('Sol found by GD: w = ', w1[-1], ',\tafter %d iterations.' %(it1+1))
     # for item in w1:
     #     st.write(item, cost(item))
 
@@ -252,13 +252,13 @@ elif(app_mode == 'Bài 03'):
     ww = temp[1]
     zz = cost(temp) 
     ax.plot3D(bb, ww, zz, 'ro', markersize = 3)
-    
-    
-    # Create an object for graph layout
-    data = go.Surface(x = b, y = w, z = z)
-    fig = go.Figure(data)
 
-    st.plotly_chart(fig)
+
+    ax.plot_wireframe(b, w, z)
+    ax.set_xlabel("b")
+    ax.set_ylabel("w")
+
+    st.pyplot(fig=None, clear_figure=None)
 
 elif(app_mode == 'Bài 04'):
     st.title("BÀI 04")
